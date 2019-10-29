@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package customer;
+
+option java_package = "com.tungbt.order.grpc";
+option java_multiple_files = true;
+
+message CreateOrderGrpcRequest {
+  int32 customerId = 1;
+  int32 value = 2;
+}
+
+message CreateOrderGrpcResponse {
+  string code = 1;
+  string description = 2;
+}
+
+service OrderService {
+  rpc CheckAndReduceBalance(CreateOrderGrpcRequest) returns (CreateOrderGrpcResponse) {};
+
+}
